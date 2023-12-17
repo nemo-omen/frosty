@@ -9,7 +9,7 @@
  * @example if (result.isFailure()) { console.log(result.getError()); }
  * @courtesy https://lab.scub.net/understanding-result-pattern-in-typescript-e82934cea096
  */
-class Result<T, E> {
+export class Result<T, E> {
   private _isSuccess: boolean;
   private value?: T;
   private error?: E;
