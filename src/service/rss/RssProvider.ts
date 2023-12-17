@@ -1,4 +1,4 @@
-import { ISourceProvider } from "../../../types/ISourceProvider";
+import { ISourceProvider } from "../../model/interfaces/ISourceProvider";
 import { Story } from "../../model";
 
 /**
