@@ -1,4 +1,4 @@
-import { ISource, IStory } from "../../types";
+import { ISource, IStory } from "./interfaces";
 
 export class Story implements IStory {
   private _id: string;

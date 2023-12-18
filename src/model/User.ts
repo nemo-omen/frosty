@@ -1,6 +1,6 @@
 import { Annotation } from "./Annotation";
 import { Source } from "./Source";
-import { IUser } from "../../types";
+import { IUser } from "./interfaces";
 
 export class User implements IUser {
   _id: string;

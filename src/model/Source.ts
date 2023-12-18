@@ -1,5 +1,4 @@
-import { RssProvider, ScraperProvider } from "../service";
-import { ISource, ISourceProvider, IUser } from "../../types";
+import { ISource, IUser } from "./interfaces";
 
 
 export class Source implements ISource {
@@ -13,7 +12,6 @@ export class Source implements ISource {
   private _lastUpdated: Date;
   private _type: string;
   private _subscribers: IUser[] = [];
-  private _provider: ISourceProvider | null = null;
 
   constructor (
     id: string,
@@ -39,30 +37,12 @@ export class Source implements ISource {
     this._language = language;
     this._lastUpdated = lastUpdated;
     this._type = type;
-    this.initProvider();
     this.initSubscribers();
   }
 
   async initSubscribers() {
     // TODO: Implement
     this._subscribers = [];
-  }
-
-  initProvider() {
-    if (this._type === 'SCRAPER') {
-      this._provider = new ScraperProvider(this._url, this._name);
-    } else if (this._type === 'RSS') {
-      this._provider = new RssProvider(this._url, this._name);
-    }
-  }
-
-  /**
-   * Fetches the latest stories from the source
-   * @returns {Promise<Story[]>}
-   * @memberof Source
-   */
-  async fetchLatest() {
-    return await this._provider!.fetchLatest();
   }
 
   get id(): string {
@@ -103,9 +83,5 @@ export class Source implements ISource {
 
   get subscribers(): IUser[] {
     return this._subscribers;
-  }
-
-  get provider(): ISourceProvider | null {
-    return this._provider;
   }
 }

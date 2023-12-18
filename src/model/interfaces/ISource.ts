@@ -12,5 +12,4 @@ export interface ISource {
   lastUpdated: Date;
   type: string;
   subscribers: IUser[];
-  provider: ISourceProvider | null;
 }
