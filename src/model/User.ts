@@ -11,10 +11,10 @@ export class User implements IUser {
   _annotations: Annotation[] = [];
 
   constructor (
-    id: string,
     name: string,
     email: string,
     password: string,
+    id: string | undefined = undefined,
   ) {
     if (id) {
       this._id = id;
