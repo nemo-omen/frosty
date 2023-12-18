@@ -1,4 +1,4 @@
-import { PersistedUserDTO } from "../dtos/UserDTO";
+import { PersistedUserDTO, ReturnUserDTO } from "../dtos/UserDTO";
 import { User } from "../../model";
 
 export class UserMapper {
@@ -8,6 +8,14 @@ export class UserMapper {
       name: user.name,
       email: user.email,
       password: user.password
+    };
+  }
+
+  public static toReturnDto(user: User): ReturnUserDTO {
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email
     };
   }
 

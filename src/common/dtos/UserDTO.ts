@@ -4,6 +4,12 @@ export interface NewUserDTO {
   password: string;
 }
 
+export interface ReturnUserDTO {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export interface PersistedUserDTO extends NewUserDTO {
   id: string;
 }
