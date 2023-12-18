@@ -2,7 +2,7 @@ import { PersistedUserDTO, ReturnUserDTO } from "../dtos/UserDTO";
 import { User } from "../../model";
 
 export class UserMapper {
-  public static toPersistedDto(user: User): PersistedUserDTO {
+  public static toPersistDto(user: User): PersistedUserDTO {
     return {
       id: user.id,
       name: user.name,

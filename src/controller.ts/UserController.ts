@@ -1,12 +1,12 @@
 import { IUser } from "../model/interfaces";
-import { UserService } from "../service";
+import { UserRepository } from "../repository";
 import { NewUserDTO, PersistedUserDTO, ReturnUserDTO } from "../common/dtos/UserDTO";
 
 export class UserController {
-  service: UserService;
+  service: UserRepository;
 
   constructor () {
-    this.service = new UserService();
+    this.service = new UserRepository();
   }
 
   async createUser(userDto: NewUserDTO): Promise<ReturnUserDTO> {

@@ -4,7 +4,7 @@ import { NewUserDTO, PersistedUserDTO, ReturnUserDTO } from "../common/dtos/User
 import { UserMapper } from "../common/mappers/UserMapper";
 
 
-export class UserService {
+export class UserRepository {
   users: Set<IUser> = new Set();
 
   public async create(userDto: NewUserDTO): Promise<ReturnUserDTO> {
