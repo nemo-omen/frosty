@@ -1,6 +1,7 @@
 import { IUser } from "../model/interfaces";
 import { UserRepository } from "../repository";
 import { NewUserDTO, PersistedUserDTO, ReturnUserDTO } from "../common/dtos/UserDTO";
+import { Result, ok } from "../common";
 
 export class UserController {
   service: UserRepository;
@@ -9,8 +10,8 @@ export class UserController {
     this.service = new UserRepository();
   }
 
-  async createUser(userDto: NewUserDTO): Promise<ReturnUserDTO> {
-    const user = await this.service.create(userDto);
-    return user;
+  async createUser(userDto: NewUserDTO): Promise<Result<ReturnUserDTO>> {
+    const result: Result<ReturnUserDTO> = await this.service.create(userDto);
+    return result;
   }
 }

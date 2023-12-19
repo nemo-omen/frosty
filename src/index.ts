@@ -1,20 +1,26 @@
-import { UserController } from "./controller.ts";
+import { UserController } from "./controller";
 import { Elysia } from "elysia";
-
-const app = new Elysia();
+import { Result, ok } from "./common/index";
+import { ReturnUserDTO } from "./common/dtos/UserDTO";
 
 const userController = new UserController();
 
-const home = app.get("/", async () => {
-  const userData = {
-    name: "John Doe",
-    email: "john@doe.net",
-    password: "123456",
-  };
-  const user = await userController.createUser(userData);
-  console.log(user);
-  return "Hello, world!";
-});
+const app = new Elysia()
+  .onError(({ code, error }) => {
+    return new Response(error.toString());
+  })
+  .get("/", async () => {
+    const userData = {
+      name: "John Doe",
+      email: "john@doe.net",
+      password: "123456",
+    };
+
+    const userResult: Result<ReturnUserDTO> = await userController.createUser(userData);
+
+    // TODO: Handle !ok(userResult)
+    return userResult;
+  });
 
 app.listen(3000);
 
