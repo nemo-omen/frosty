@@ -1,7 +1,7 @@
 import { UserController } from "./controller";
 import { Elysia } from "elysia";
 import { Result, ok } from "./common/index";
-import { ReturnUserDTO } from "./common/dtos/UserDTO";
+import { UserResponseDTO } from "./common/dtos/UserDTO";
 
 const userController = new UserController();
 
@@ -16,7 +16,7 @@ const app = new Elysia()
       password: "123456",
     };
 
-    const userResult: Result<ReturnUserDTO> = await userController.createUser(userData);
+    const userResult: Result<UserResponseDTO> = await userController.createUser(userData);
 
     // TODO: Handle !ok(userResult)
     return userResult;

@@ -22,7 +22,7 @@ export class User implements IUser {
       this._id = crypto.randomUUID();
     }
     this._name = name;
-    this._email = email;
+    this.email = email;
     this._password = password;
   }
 
@@ -48,6 +48,26 @@ export class User implements IUser {
 
   get subscriptions(): Source[] {
     return this._subscriptions;
+  }
+
+  set name(name: string) {
+    this._name = name;
+  }
+
+  set email(email: string) {
+    if (!email.includes("@")) {
+      throw new Error("Invalid email");
+    }
+    if (!email.includes(".")) {
+      throw new Error("Invalid email");
+    }
+    if (email.includes(" ")) {
+      throw new Error("Invalid email");
+    }
+    if (email.includes(",")) {
+      throw new Error("Invalid email");
+    }
+    this._email = email;
   }
 
   set annotations(annotations: Annotation[]) {
