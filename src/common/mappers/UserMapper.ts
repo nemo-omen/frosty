@@ -1,12 +1,13 @@
 import { UserPersistDTO, UserResponseDTO } from "../dtos/UserDTO";
 import { User } from "../../model";
+import { Email } from "../values";
 
 export class UserMapper {
   public static toPersistDto(user: User): UserPersistDTO {
     return {
       id: user.id,
       name: user.name,
-      email: user.email,
+      email: user.email.props.value,
       password: user.password
     };
   }
@@ -15,7 +16,7 @@ export class UserMapper {
     return {
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email.props.value
     };
   }
 
