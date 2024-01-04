@@ -14,7 +14,7 @@ import (
 
 var (
 	upgrader  = websocket.Upgrader{}
-	watchDirs = []string{"./static", "./static/css", "./static/js"}
+	watchDirs = []string{"./static", "./static/css", "./static/js", "./view"}
 )
 
 type Template struct {
@@ -36,8 +36,10 @@ func connectWs(c echo.Context) error {
 		watcher := setupWatchers(ws)
 		dummyNotifier := filewatcher.NewDummyNotifier()
 		wsNotifier := filewatcher.NewWsNotifier(ws)
+		templateNotifier := filewatcher.NewTemplateNotifier()
 		watcher.Register(dummyNotifier)
 		watcher.Register(wsNotifier)
+		watcher.Register(templateNotifier)
 		watcher.Watch()
 
 		// Write

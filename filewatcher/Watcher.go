@@ -5,8 +5,6 @@ import (
 	"reflect"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/google/uuid"
-	"github.com/gorilla/websocket"
 )
 
 type Watcher interface {
@@ -15,47 +13,9 @@ type Watcher interface {
 	Deregister(sub *Subscriber)
 }
 
-type Subscriber interface {
-	Update(msg string)
-	Id() uuid.UUID
-}
-
-type WsNotifier struct {
-	Conn *websocket.Conn
-	id   uuid.UUID
-}
-
-type DummyNotifier struct {
-	id uuid.UUID
-}
-
 type FileWatcher struct {
 	WatchDirs   *[]string
 	Subscribers []Subscriber
-}
-
-func NewDummyNotifier() *DummyNotifier {
-	return &DummyNotifier{id: uuid.New()}
-}
-
-func NewWsNotifier(conn *websocket.Conn) *WsNotifier {
-	return &WsNotifier{id: uuid.New(), Conn: conn}
-}
-
-func (n *WsNotifier) Id() uuid.UUID {
-	return n.id
-}
-
-func (n *DummyNotifier) Id() uuid.UUID {
-	return n.id
-}
-
-func (n *WsNotifier) Update(msg string) {
-	n.Conn.WriteJSON(map[string]string{"type": "file_change", "file": msg})
-}
-
-func (n *DummyNotifier) Update(msg string) {
-	log.Println("DummyNotifier update: ", msg)
 }
 
 func NewFileWatcher(dirs *[]string) *FileWatcher {
