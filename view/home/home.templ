@@ -1,0 +1,9 @@
+package home
+
+import "github.com/nemo-omen/frosty/view/layout"
+
+templ Show(title string) {
+  @layout.Base(title) {
+    <h1>{ title }</h1>
+  }
+}

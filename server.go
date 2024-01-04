@@ -4,17 +4,24 @@ import (
 	"fmt"
 	"html/template"
 	"io"
-	"net/http"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/nemo-omen/frosty/filewatcher"
+	"github.com/nemo-omen/frosty/handler"
 )
 
 var (
 	upgrader  = websocket.Upgrader{}
-	watchDirs = []string{"./static", "./static/css", "./static/js", "./view"}
+	watchDirs = []string{
+		"./static",
+		"./static/css",
+		"./static/js",
+		"./view",
+		"./view/home",
+		"./view/layout",
+	}
 )
 
 type Template struct {
@@ -65,10 +72,9 @@ func setupWatchers(conn *websocket.Conn) *filewatcher.FileWatcher {
 
 func main() {
 	app := echo.New()
+	homeHandler := handler.HomeHandler{}
 	app.Use(middleware.Static("./static"))
-	app.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, world!")
-	})
+	app.GET("/", homeHandler.HandleHomeShow)
 
 	app.GET("/livereload", connectWs)
 	app.Logger.Fatal(app.Start(":1323"))

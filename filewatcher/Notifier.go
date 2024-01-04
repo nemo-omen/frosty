@@ -65,10 +65,13 @@ func (n *TemplateNotifier) Update(msg string) {
 	extension := filenameParts[len(filenameParts)-1]
 	if extension == "templ" {
 		log.Println("Template updated: ", fileName)
-		err := exec.Command("templ generate")
+		cmd := exec.Command("templ", "generate")
+		stdout, err := cmd.Output()
 		if err != nil {
-			log.Println("Error generating templates", err)
+			log.Println("Error generating templates", err.Error())
+			return
 		}
+		log.Print(stdout)
 	}
 }
 
