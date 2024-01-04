@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"html/template"
+	"io"
 	"net/http"
 
 	"github.com/gorilla/websocket"
@@ -14,6 +16,14 @@ var (
 	upgrader  = websocket.Upgrader{}
 	watchDirs = []string{"./static", "./static/css", "./static/js"}
 )
+
+type Template struct {
+	templates *template.Template
+}
+
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
 
 func connectWs(c echo.Context) error {
 	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
@@ -40,18 +50,9 @@ func connectWs(c echo.Context) error {
 		_, msg, err := ws.ReadMessage()
 		if err != nil {
 			c.Logger().Error(err)
-			if websocket.IsCloseError(err) {
-				teardownWatchers(watcher, []filewatcher.Subscriber{dummyNotifier, wsNotifier})
-			}
 		}
 
 		fmt.Printf("%s\n", msg)
-	}
-}
-
-func teardownWatchers(watcher *filewatcher.FileWatcher, subscribers []filewatcher.Subscriber) {
-	for _, s := range subscribers {
-		watcher.Deregister(s)
 	}
 }
 
