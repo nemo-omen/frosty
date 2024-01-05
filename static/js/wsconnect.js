@@ -6,7 +6,7 @@ function connect() {
   })
   
   socket.addEventListener('close', (event) => {
-    console.log('socket disconnected, reconnecting');    
+    console.log('socket disconnected, reconnecting');
     setTimeout(() => {
       connect()
     }, 500)

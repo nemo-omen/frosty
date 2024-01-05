@@ -1,0 +1,25 @@
+:root {
+  --sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --dark: #100d1a;
+  --light: #fff2f2;
+  --accent: #00e5ff;
+  --accent-alt: #ff4f9e;
+  --background: var(--dark);
+  --foreground: var(--light);
+  --link: var(--accent);
+  --highlight: var(--accent-alt);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--sans);
+}
+
+a {
+  color: var(--link);
+
+}
