@@ -32,10 +32,10 @@ func (h WsHandler) HandleConnectWs(c echo.Context) error {
 
 	for {
 		watcher := setupWatchers(ws)
-		dummyNotifier := filewatcher.NewDummyNotifier()
+		// dummyNotifier := filewatcher.NewDummyNotifier()
 		wsNotifier := filewatcher.NewWsNotifier(ws)
 		templateNotifier := filewatcher.NewTemplateNotifier()
-		watcher.Register(dummyNotifier)
+		// watcher.Register(dummyNotifier)
 		watcher.Register(wsNotifier)
 		watcher.Register(templateNotifier)
 		watcher.Watch()

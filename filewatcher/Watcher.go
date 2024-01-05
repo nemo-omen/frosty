@@ -26,23 +26,23 @@ func NewFileWatcher(dirs *[]string) *FileWatcher {
 }
 
 func (w *FileWatcher) Register(s Subscriber) {
-	log.Println("Registering new subscriber", s.Id())
+	// log.Println("Registering new subscriber", s.Id())
 	for _, sub := range w.Subscribers {
 		if reflect.TypeOf(sub) == reflect.TypeOf(s) {
 			w.Deregister(sub)
 		}
 	}
 	w.Subscribers = append(w.Subscribers, s)
-	log.Println("Subscriber registered: ", s.Id())
-	log.Println("Number of subscribers: ", len(w.Subscribers))
+	// log.Println("Subscriber registered: ", s.Id())
+	// log.Println("Number of subscribers: ", len(w.Subscribers))
 }
 
 func (w *FileWatcher) Deregister(s Subscriber) {
 	for index, notifier := range w.Subscribers {
 		if notifier.Id() == s.Id() {
 			w.Subscribers = remove(w.Subscribers, index)
-			log.Println("Subscriber deregistered: ", s.Id())
-			log.Println("Number of subscribers: ", len(w.Subscribers))
+			// log.Println("Subscriber deregistered: ", s.Id())
+			// log.Println("Number of subscribers: ", len(w.Subscribers))
 		}
 	}
 }
