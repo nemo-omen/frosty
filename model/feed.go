@@ -1,17 +1,10 @@
 package model
 
-import (
-	"time"
-)
-
-type Item struct {
-	Title   string
-	Url     string
-	PubDate time.Time
-	Content string
-}
-
 type Feed struct {
-	Url   string
-	Items []Item
+	Title       string
+	Description string
+	Link        string
+	Language    string
+	Image       string
+	Items       []*Item
 }
