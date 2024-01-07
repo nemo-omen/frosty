@@ -2,8 +2,9 @@ import Database from 'bun:sqlite';
 import { Hono } from 'hono';
 import { serveStatic } from 'hono/bun';
 import { csrf } from 'hono/csrf';
-import { secureHeaders } from 'hono/secure-headers';
 import { jsxRenderer } from 'hono/jsx-renderer';
+import { logger } from 'hono/logger';
+import { secureHeaders } from 'hono/secure-headers';
 import { HtmlEscapedString } from 'hono/utils/html';
 import { Session, sessionMiddleware, CookieStore } from 'hono-sessions';
 import { BunSqliteStore } from 'hono-sessions/bun-sqlite-store';
@@ -25,6 +26,7 @@ declare module 'hono' {
   }
 }
 
+app.use('*', logger());
 app.use('/public/*', serveStatic({ root: './' }));
 // app.use('*', secureHeaders());
 app.use('*', csrf({ origin: 'http://localhost:3000' }));

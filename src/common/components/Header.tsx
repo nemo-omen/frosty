@@ -36,7 +36,6 @@ const BaseHeader: FC = ({children}) => {
 const authedHeader = ({sessionUser}) => (
   <BaseHeader>
     <ul>
-      <li><a href="/">Home</a></li>
       <li><a href={`/profile/${sessionUser.id}`}>{sessionUser.email}</a></li>
       <li>
         <form action="/auth/logout" method="POST">

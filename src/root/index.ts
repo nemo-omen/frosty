@@ -5,10 +5,7 @@ const app = new Hono();
 
 app.get('/', (c: Context) => {
   const session = c.get('session');
-  const sessionValid = session.sessionValid();
-  console.log(sessionValid);
   const sessionUser = session.get('user');
-  console.log({ sessionUser });
   if (sessionUser) {
     return c.redirect('/home');
   }

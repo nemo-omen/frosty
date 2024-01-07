@@ -3,8 +3,7 @@ import { validator } from 'hono/validator';
 import { z } from 'zod';
 import { Login } from './view/Login';
 import { Signup } from './view/Signup';
-import { AuthResult, getUserByEmail, insertUser, authenticateUser, userExists } from './user.service';
-import { FlashMessage } from '../common/interfaces/FlashMessage';
+import { insertUser, authenticateUser, userExists } from './user.service';
 
 const app = new Hono();
 
@@ -131,8 +130,6 @@ app.post(
 app.post('/logout', (c: Context) => {
   const session = c.get('session');
   session.deleteSession();
-  console.log(session);
-  console.log(session.getCache());
   return c.redirect('/auth/login');
 });
 export default app;

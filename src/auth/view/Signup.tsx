@@ -1,5 +1,4 @@
 import { Context } from "hono";
-import { Base } from "../../common/layout/Base";
 
 export const Signup = (c: Context) => c.render(
   <div class="auth-form">
