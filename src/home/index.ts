@@ -4,15 +4,11 @@ const app = new Hono();
 
 app.get('/', (c: Context) => {
   const session = c.get('session');
-  c.set('title', 'Home');
-  if (!session) {
-    c.redirect('/login');
+  const sessionUser = session.get('user');
+  if (sessionUser) {
+    return Home(c);
   }
-
-  const userId = session.get('userId');
-  const userEmail = session.get('userEmail');
-
-  return Home(c);
+  return c.redirect('/auth/login');
 });
 
 export default app;

@@ -2,6 +2,8 @@ import { Context } from "hono";
 import { Base } from "../../common/layout/Base";
 
 export const Signup = (c: Context) => c.render(
+  <div class="auth-form">
+    <h2>Sign Up</h2>
     <form action="/auth/signup" method="POST">
       <fieldset>
         <label for="email">Email</label>
@@ -16,7 +18,8 @@ export const Signup = (c: Context) => c.render(
         <input type="password" name="confirm" id="confirm" />
       </fieldset>
       <button type="submit">Sign Up</button>
-    </form>,
+    </form>
+  </div>,
     {
       title: 'Sign Up'
     }

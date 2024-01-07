@@ -1,14 +1,110 @@
 :root {
   --sans: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --dark: #13111b;
-  --light: #ffffff;
-  --accent: #ff5689;
-  --accent-alt: #47b2ff;
+  --light-step: 10%;
+  --l-0: var(--light-step);
+  --l-1: calc(var(--l-0) + var(--light-step));
+  --l-2: calc(var(--l-1) + var(--light-step));
+  --l-3: calc(var(--l-2) + var(--light-step));
+  --l-4: calc(var(--l-3) + var(--light-step));
+  --l-5: calc(var(--l-4) + var(--light-step));
+  --l-6: calc(var(--l-5) + var(--light-step));
+  --l-7: calc(var(--l-6) + var(--light-step));
+  --l-8: calc(var(--l-7) + var(--light-step));
+  --l-9: calc(var(--l-8) + var(--light-step));
+  --l-10: calc(var(--l-9) + var(--light-step));
 
-  --background: var(--dark);
-  --foreground: var(--light);
-  --link: var(--accent-alt);
-  --hover: var(--accent);
+  --dark: hsl(252, 23%, 9%);
+  --dark-h: 252;
+  --dark-s: 23%;
+  --dark-l: 9;
+  --dark-0: hsl(var(--dark-h), var(--dark-s), var(--l-0));
+  --dark-1: hsl(var(--dark-h), var(--dark-s), var(--l-1));
+  --dark-2: hsl(var(--dark-h), var(--dark-s), var(--l-2));
+  --dark-3: hsl(var(--dark-h), var(--dark-s), var(--l-3));
+  --dark-4: hsl(var(--dark-h), var(--dark-s), var(--l-4));
+  --dark-5: hsl(var(--dark-h), var(--dark-s), var(--l-5));
+  --dark-6: hsl(var(--dark-h), var(--dark-s), var(--l-6));
+  --dark-7: hsl(var(--dark-h), var(--dark-s), var(--l-7));
+  --dark-8: hsl(var(--dark-h), var(--dark-s), var(--l-8));
+  --dark-9: hsl(var(--dark-h), var(--dark-s), var(--l-9));
+  --dark-10: hsl(var(--dark-h), var(--dark-s), var(--l-10));
+
+  --light: hsl(252, 100%, 95%);
+  --light-h: 252;
+  --light-s: 100%;
+  --light-l: 95%;
+  --light-0: hsl(var(--light-h), var(--light-s), var(--l-0));
+  --light-1: hsl(var(--light-h), var(--light-s), var(--l-1));
+  --light-2: hsl(var(--light-h), var(--light-s), var(--l-2));
+  --light-3: hsl(var(--light-h), var(--light-s), var(--l-3));
+  --light-4: hsl(var(--light-h), var(--light-s), var(--l-4));
+  --light-5: hsl(var(--light-h), var(--light-s), var(--l-5));
+  --light-6: hsl(var(--light-h), var(--light-s), var(--l-6));
+  --light-7: hsl(var(--light-h), var(--light-s), var(--l-7));
+  --light-8: hsl(var(--light-h), var(--light-s), var(--l-8));
+  --light-9: hsl(var(--light-h), var(--light-s), var(--l-9));
+  --light-10: hsl(var(--light-h), var(--light-s), var(--l-10));
+
+  --accent: hsl(342, 100%, 67%);
+  --accent-h: 342;
+  --accent-s: 100%;
+  --accent-l: 67%;
+  --accent-0: hsl(var(--accent-h), var(--accent-s), var(--l-0));
+  --accent-1: hsl(var(--accent-h), var(--accent-s), var(--l-1));
+  --accent-2: hsl(var(--accent-h), var(--accent-s), var(--l-2));
+  --accent-3: hsl(var(--accent-h), var(--accent-s), var(--l-3));
+  --accent-4: hsl(var(--accent-h), var(--accent-s), var(--l-4));
+  --accent-5: hsl(var(--accent-h), var(--accent-s), var(--l-5));
+  --accent-6: hsl(var(--accent-h), var(--accent-s), var(--l-6));
+  --accent-7: hsl(var(--accent-h), var(--accent-s), var(--l-7));
+  --accent-8: hsl(var(--accent-h), var(--accent-s), var(--l-8));
+  --accent-9: hsl(var(--accent-h), var(--accent-s), var(--l-9));
+  --accent-0: hsl(var(--accent-h), var(--accent-s), var(--l-0));
+
+  --accent-alt: hsl(205, 100%, 64%);
+  --accent-alt-h: 205;
+  --accent-alt-s: 100%;
+  --accent-alt-l: 64%;
+  --accent-alt-0: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-0));
+  --accent-alt-1: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-1));
+  --accent-alt-2: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-2));
+  --accent-alt-3: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-3));
+  --accent-alt-4: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-4));
+  --accent-alt-5: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-5));
+  --accent-alt-6: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-6));
+  --accent-alt-7: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-7));
+  --accent-alt-8: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-8));
+  --accent-alt-9: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-9));
+  --accent-alt-0: hsl(var(--accent-alt-h), var(--accent-alt-s), var(--l-0));
+
+  --background: var(--dark-0);
+  --background-1: var(--dark-1);
+  --background-2: var(--dark-2);
+  --background-3: var(--dark-3);
+  --background-4: var(--dark-4);
+  --background-5: var(--dark-5);
+  --background-6: var(--dark-6);
+  --background-7: var(--dark-7);
+  --background-8: var(--dark-8);
+  --background-9: var(--dark-9);
+  --background-10: var(--dark-10);
+
+  --foreground: var(--light-9);
+  --foreground-1: var(--light-1);
+  --foreground-2: var(--light-2);
+  --foreground-3: var(--light-3);
+  --foreground-4: var(--light-4);
+  --foreground-5: var(--light-5);
+  --foreground-6: var(--light-6);
+  --foreground-7: var(--light-7);
+  --foreground-8: var(--light-8);
+  --foreground-9: var(--light-9);
+  --foreground-10: var(--light-10);
+
+  --link: var(--accent-alt-6);
+  --hover: var(--accent-alt-8);
+
+  --transition: 0.2s ease-in-out;
 }
 
 *,
@@ -27,12 +123,25 @@ body {
   font-size: 1rem;
 }
 
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 0;
+}
+
+.header-inner {
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  margin: 0;
 }
 
 header nav ul {
@@ -52,11 +161,114 @@ a,
   font-size: 1rem;
   text-decoration: underline;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all var(--transition);
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 a:hover,
 .button-link:hover {
   text-decoration: none;
   color: var(--hover);
+  background-color: transparent;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-top: 8rem;
+  width: min(22rem, 90vw);
+  height: 100%;
+  margin: 0 auto;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & fieldset {
+    min-width: 100%;
+  }
+}
+
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+fieldset label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: var(--accent-5);
+}
+
+input {
+  background-color: var(--background-0);
+  border: 1px solid var(--accent-alt-5);
+  outline-color: var(--accent-alt-5);
+  font-size: 1rem;
+  padding-block: 0.25em;
+  transition: all var(--transition);
+  color: var(--foreground);
+}
+
+input:focus-visible,
+input:active {
+  background-color: var(--background-1) !important;
+  color: var(--foreground) !important;
+  border-color: var(--accent-alt-6) !important;
+  outline: 1px solid var(--accent-alt-6) !important;
+  outline-offset: 0px !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: var(--background-0) !important;
+  color: var(--foreground) !important;
+  border-color: var(--accent-alt-6) !important;
+  outline: 1px solid var(--accent-alt-6) !important;
+  outline-offset: 0px !important;
+  box-shadow: 0 0 0 100px var(--background) inset;
+  overflow: hidden !important;
+  -webkit-text-fill-color: var(--foreground);
+}
+
+button,
+.button {
+  background-color: var(--accent-alt-5);
+  font-size: 1rem;
+  padding: 0.5em;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+button:hover,
+.button:hover {
+  background-color: var(--accent-alt-6);
 }
