@@ -1,9 +1,14 @@
 :root {
+  --sans: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --dark: #13111b;
   --light: #ffffff;
+  --accent: #ff5689;
+  --accent-alt: #47b2ff;
 
   --background: var(--dark);
   --foreground: var(--light);
+  --link: var(--accent-alt);
+  --hover: var(--accent);
 }
 
 *,
@@ -16,4 +21,42 @@ html,
 body {
   background-color: var(--background);
   color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+.button-link {
+  color: var(--link);
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover,
+.button-link:hover {
+  text-decoration: none;
+  color: var(--hover);
 }
