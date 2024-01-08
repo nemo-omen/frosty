@@ -1,5 +1,6 @@
 import { FC } from 'hono/jsx';
 import { useRequestContext } from 'hono/jsx-renderer';
+import { Icon } from './Icon';
 
 export const Header: FC = () => {
   const c = useRequestContext();
@@ -19,7 +20,12 @@ const BaseHeader: FC = ({children}) => {
   return(
     <header>
       <div class="header-inner">
-        <a href="/" id="main-link">Frosty</a>
+        <a href="/" id="main-link">
+          <span>
+            <Icon name="bolt" />
+          </span>
+          Stringer
+        </a>
 
         <nav aria-label="main">
           {children}
