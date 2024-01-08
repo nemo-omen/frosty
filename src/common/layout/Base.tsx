@@ -14,9 +14,7 @@ export const Base = ({children, title}) => {
     </head>
     <body>
       <Header />
-      <main>
         {children}
-      </main>
     </body>
     </html>
   )

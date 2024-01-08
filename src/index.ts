@@ -8,7 +8,7 @@ import { secureHeaders } from 'hono/secure-headers';
 import { HtmlEscapedString } from 'hono/utils/html';
 import { Session, sessionMiddleware, CookieStore } from 'hono-sessions';
 import { BunSqliteStore } from 'hono-sessions/bun-sqlite-store';
-import home from './home';
+import dashboard from './dashboard';
 import auth from './auth';
 import root from './root';
 import { Base } from './common/layout/Base';
@@ -52,5 +52,5 @@ app.use(
 
 app.route('/', root);
 app.route('/auth', auth);
-app.route('/home', home);
+app.route('/home', dashboard);
 export default app;

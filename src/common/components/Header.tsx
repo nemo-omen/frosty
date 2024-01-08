@@ -21,7 +21,7 @@ const BaseHeader: FC = ({children}) => {
       <div class="header-inner">
         <a href="/" id="main-link">Frosty</a>
 
-        <nav>
+        <nav aria-label="main">
           {children}
         </nav>
       </div>
