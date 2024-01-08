@@ -351,3 +351,17 @@ button:hover,
 .button:hover {
   background-color: var(--accent-alt-7);
 }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
