@@ -72,7 +72,7 @@ app.post(
       return c.redirect('/auth/login');
     }
     session.set('user', { id: id, email: email });
-    return c.redirect('/home');
+    return c.redirect('/dashboard');
   }
 );
 

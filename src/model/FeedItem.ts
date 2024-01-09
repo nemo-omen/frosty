@@ -16,6 +16,5 @@ export class FeedItem {
     this.link = props.link;
     this.pubDate = props.pubDate;
     this.content = props.content;
-
   }
 }

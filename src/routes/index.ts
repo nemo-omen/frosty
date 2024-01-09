@@ -7,7 +7,7 @@ app.get('/', (c: Context) => {
   const session = c.get('session');
   const sessionUser = session.get('user');
   if (sessionUser) {
-    return c.redirect('/home');
+    return c.redirect('/dashboard');
   }
   return Root(c);
 });

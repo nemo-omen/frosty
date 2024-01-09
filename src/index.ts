@@ -50,7 +50,17 @@ app.use(
   ),
 );
 
+app.use('/dashboard/*', async (c: Context, next: Next) => {
+  const session = c.get('session');
+  const sessionUser = session.get('user');
+
+  if (!sessionUser) {
+    return c.redirect('/auth/login');
+  }
+  await next();
+});
+
 app.route('/', root);
 app.route('/auth', auth);
-app.route('/home', dashboard);
+app.route('/dashboard', dashboard);
 export default app;

@@ -1,4 +1,3 @@
-import { main } from 'bun';
 import { Context } from 'hono'
 import { FC } from 'hono/jsx';
 import { MainSidebar } from '../../lib/components/MainSidebar';

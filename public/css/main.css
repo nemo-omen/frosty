@@ -263,14 +263,13 @@ a:hover,
   background-color: transparent;
 }
 
-.auth-form {
+.auth-form,
+.constrained-form {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  width: min(22rem, 90vw);
+  gap: 2rem;
   /* height: 100%; */
   margin: 0 auto;
-  background-color: var(--background--1);
   border-radius: 1rem;
   padding: 2rem;
   margin-top: 8rem;
@@ -278,6 +277,21 @@ a:hover,
   & h2 {
     text-align: center;
   }
+}
+
+.constrained-form {
+  width: min(30rem, 90vw);
+  align-items: flex-start;
+
+}
+
+.constrained-form input {
+  width: min(30rem, 90vw);
+}
+
+.auth-form {
+  width: min(22rem, 90vw);
+  background-color: var(--background--1);
 }
 
 .auth-form form {
