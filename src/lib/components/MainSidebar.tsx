@@ -1,22 +1,12 @@
-import { main } from 'bun';
-import { Context } from 'hono'
 import { FC } from 'hono/jsx';
-import { Icon } from '../common/components/Icon';
+import { Icon } from './Icon';
+import { useRequestContext } from 'hono/jsx-renderer';
 
-export const Dashboard = (c: Context) => {
-  return c.render(
-    <>
-      <FeedSidebar />
-      <FeedList />
-    </>,
-    {
-      title: 'Dashboard'
-    }
-  )
-};
-
-const FeedSidebar: FC = () => {
-  return(
+export const MainSidebar: FC = () => {
+  const c = useRequestContext();
+  const { feeds, collections } = c;
+  
+  return (
     <aside class="sidebar" id="sidebar-main">
       <nav aria-label="feed-sidebar" id="#sidebar-nav">
       <ul>
@@ -30,13 +20,5 @@ const FeedSidebar: FC = () => {
       </ul>
       </nav>
     </aside>
-  )
-}
-
-const FeedList: FC = () => {
-  return (
-    <main>
-      <h2>Feed Items Here</h2>
-    </main>
   )
 }

@@ -8,10 +8,10 @@ import { secureHeaders } from 'hono/secure-headers';
 import { HtmlEscapedString } from 'hono/utils/html';
 import { Session, sessionMiddleware, CookieStore } from 'hono-sessions';
 import { BunSqliteStore } from 'hono-sessions/bun-sqlite-store';
-import dashboard from './dashboard';
-import auth from './auth';
-import root from './root';
-import { Base } from './common/layout/Base';
+import dashboard from './routes/dashboard';
+import auth from './routes/auth';
+import root from './routes';
+import { Base } from './lib/layout/Base';
 
 const app = new Hono<{ Variables: { session: Session, session_key_rotation: boolean; }; }>(
 );

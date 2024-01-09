@@ -1,5 +1,5 @@
 import { Context } from 'hono';
-import { Base } from '../../common/layout/Base';
+import { Base } from '../../lib/layout/Base';
 
 export const Login = (c: Context) => {
   const session = c.get('session');
