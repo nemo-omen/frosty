@@ -1,11 +1,13 @@
 import { Dashboard } from './Dashboard';
-import { FeedSearch } from './FeedSearch';
-import { FeedResult } from './FeedResult';
+import { AddFeedPage } from './AddFeedPage';
+import { FeedResultPage } from './FeedResultPage';
 import { Context, Hono } from 'hono';
 import { SQLiteFeedRepository } from '../../repo/feed.repository';
 import { db } from '../../lib/infra/sqlite';
 import { z } from 'zod';
 import { validator } from 'hono/validator';
+import { RssService } from '../../service/RssService';
+import Parser from 'rss-parser';
 
 const app = new Hono();
 
@@ -20,7 +22,7 @@ app.get('/', async (c: Context) => {
 });
 
 app.get('/new', (c: Context) => {
-  return FeedSearch(c);
+  return AddFeedPage(c);
 });
 
 app.post(
@@ -38,11 +40,47 @@ app.post(
     }
     return result.data;
   }),
-  (c: Context) => {
-    const data = c.req.valid('form');
-    console.log({ data });
-    return FeedResult(c);
+  async (c: Context) => {
+    // Returns valid data only
+    let data: { feedurl: string; } = c.req.valid('form');
+    if (!data) {
+      // If no valid data, get formData directly
+      const formdata = (await c.req.formData());
+      data = { feedurl: String(formdata.get('feedurl')) };
+    }
+    const feedResult = await resolveUrl(data.feedurl);
+
+    if (feedResult.ok) {
+      c.set('feed', feedResult.data);
+    }
+    // set context value to repopulate form
+    // input on new page load
+    c.set('searchUrl', data.feedurl);
+    return FeedResultPage(c);
   }
 );
+
+async function resolveUrl(input: string): Promise<unknown> {
+  const rssService = new RssService(new Parser());
+  let updated: string;
+  if (input.startsWith('http://') || input.startsWith('http://')) {
+    updated = input;
+  } else {
+    updated = 'https://' + input;
+  }
+
+  if (!updated.endsWith('rss') || !updated.endsWith('xml') || !updated.endsWith('feed')) {
+    const rssResult = await rssService.getFeedByUrl(updated + '.rss');
+    if (rssResult.ok) return rssResult;
+    const xmlResult = await rssService.getFeedByUrl('.xml');
+    if (xmlResult.ok) return xmlResult;
+    const feedPathResult = await rssService.getFeedByUrl(updated + '/feed');
+    if (feedPathResult.ok) return feedPathResult;
+    const rssPathResult = await rssService.getFeedByUrl('/rss');
+    if (rssPathResult.ok) return rssPathResult;
+  }
+  const result = await rssService.getFeedByUrl(updated);
+  return result;
+}
 
 export default app;
