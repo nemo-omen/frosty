@@ -7,8 +7,15 @@ export const MainSidebar: FC = () => {
   const { feeds, collections } = c;
   
   return (
-    <aside class="sidebar" id="sidebar-main">
-      <nav aria-label="feed-sidebar" id="#sidebar-nav">
+    <header class="sidebar" id="sidebar-main">
+      <nav aria-label="main" id="#sidebar-nav">
+      <a href="/" id="main-link">
+        Stringer
+        <span>
+          <Icon name="bolt" />
+        </span>
+      </a>
+
       <ul>
         <li><a href="/dashboard" class="icon-link"><Icon name="list" />All Posts</a></li>
         <li><a href="/dashboard/notes" class="icon-link"><Icon name="inbox" />Unread</a></li>
@@ -19,6 +26,6 @@ export const MainSidebar: FC = () => {
         <li><a href="/dashboard/new" class="icon-link"><Icon name="add" />Add Feed</a></li>
       </ul>
       </nav>
-    </aside>
+    </header>
   )
 }

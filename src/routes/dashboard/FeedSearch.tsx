@@ -10,11 +10,9 @@ export const FeedSearch: FC = () => {
   // so there's continuity between page loads.
   const searchUrl: string = c.get('searchUrl');
   return (
-    <form action="/dashboard/new" method="POST" class="constrained-form">
-      <fieldset>
-        <label for="feedurl">Feed URL</label>
-        <input type="text" name="feedurl" id="feedurl" value={searchUrl} />
-      </fieldset>
+    <form action="/dashboard/new" method="POST" class="feed-search-form">
+      <label for="feedurl">Search for a Feed</label>
+      <input type="text" name="feedurl" id="feedurl" value={searchUrl} />
       <button type="submit">Search</button>
     </form>
   )
